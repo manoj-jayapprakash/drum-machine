@@ -1,7 +1,5 @@
-import './Key.css'
+import './Key.css';
 
-export const Key = () => {
-    return (
-        
-    )
-}
+export const Key = (props) => {
+  return <button className="drum-pad">{props.id}</button>;
+};

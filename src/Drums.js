@@ -1,55 +1,74 @@
 import './Drums.css';
 import { Key } from './Key';
-
+import boom from './assets/sounds/boom.wav';
+import clap from './assets/sounds/clap.wav';
+import hihat from './assets/sounds/hihat.wav';
+import kick from './assets/sounds/kick.wav';
+import openhat from './assets/sounds/openhat.wav';
+import ride from './assets/sounds/ride.wav';
+import snare from './assets/sounds/snare.wav';
+import tink from './assets/sounds/tink.wav';
+import tom from './assets/sounds/tom.wav';
 export const Drums = () => {
   const data = [
     {
       id: 'Q',
-      title: '',
-      music: '',
+      title: 'Boom',
+      music: boom,
     },
 
     {
       id: 'W',
-      title: '',
-      music: '',
+      title: 'Clap',
+      music: clap,
     },
     {
       id: 'E',
-      title: '',
-      music: '',
+      title: 'Hihat',
+      music: hihat,
     },
     {
       id: 'A',
-      title: '',
-      music: '',
+      title: 'Kick',
+      music: kick,
     },
     {
       id: 'S',
-      title: '',
-      music: '',
+      title: 'Openhat',
+      music: openhat,
     },
     {
       id: 'D',
-      title: '',
-      music: '',
+      title: 'Ride',
+      music: ride,
     },
     {
       id: 'Z',
-      title: '',
-      music: '',
+      title: 'Snare',
+      music: snare,
     },
     {
       id: 'X',
-      title: '',
-      music: '',
+      title: 'Tink',
+      music: tink,
     },
     {
       id: 'C',
-      title: '',
-      music: '',
+      title: 'Tom',
+      music: tom,
     },
   ];
 
-  return <main id="drum-machine"></main>;
+  return (
+    <main id="drum-machine">
+      <div className="keys">
+        {data.map((d) => (
+          <Key key={d.id} id={d.id} title={d.title} music={d.music} />
+        ))}
+      </div>
+      <div className="controls">
+        <div id="display">Music</div>
+      </div>
+    </main>
+  );
 };
