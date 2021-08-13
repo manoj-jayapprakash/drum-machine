@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import './Drums.css';
 import { Key } from './Key';
 import boom from './assets/sounds/boom.wav';
@@ -9,6 +11,7 @@ import ride from './assets/sounds/ride.wav';
 import snare from './assets/sounds/snare.wav';
 import tink from './assets/sounds/tink.wav';
 import tom from './assets/sounds/tom.wav';
+
 export const Drums = () => {
   const data = [
     {
@@ -67,7 +70,7 @@ export const Drums = () => {
         ))}
       </div>
       <div className="controls">
-        <div id="display">Music</div>
+        <div id="display"></div>
       </div>
     </main>
   );

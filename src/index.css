@@ -3,3 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+:root {
+  --spacing: 1rem;
+  --border-rad: 5px;
+  --shadow: 0 0 10px -5px hsla(103, 16%, 35%, 0.925);
+}

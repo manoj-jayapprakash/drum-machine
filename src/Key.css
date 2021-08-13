@@ -1,3 +1,9 @@
 .drum-pad {
   padding: 2rem;
+  border-radius: var(--border-rad);
+  box-shadow: var(--shadow);
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background-color: hsl(43, 74%, 66%);
 }
