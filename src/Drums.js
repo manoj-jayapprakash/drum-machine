@@ -13,6 +13,7 @@ import tink from './assets/sounds/tink.wav';
 import tom from './assets/sounds/tom.wav';
 
 export const Drums = () => {
+  const [musicTitle, setMusicTitle] = useState('');
   const data = [
     {
       id: 'Q',
@@ -62,15 +63,25 @@ export const Drums = () => {
     },
   ];
 
+  const keyPressHandler = (title) => {
+    setMusicTitle(title);
+  };
+
   return (
     <main id="drum-machine">
       <div className="keys">
         {data.map((d) => (
-          <Key key={d.id} id={d.id} title={d.title} music={d.music} />
+          <Key
+            key={d.id}
+            id={d.id}
+            title={d.title}
+            music={d.music}
+            onPress={keyPressHandler}
+          />
         ))}
       </div>
       <div className="controls">
-        <div id="display"></div>
+        <div id="display">{musicTitle}</div>
       </div>
     </main>
   );

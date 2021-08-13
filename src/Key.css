@@ -7,3 +7,7 @@
   cursor: pointer;
   background-color: hsl(43, 74%, 66%);
 }
+
+.drum-pad:active {
+  background-color: #f4a261;
+}
