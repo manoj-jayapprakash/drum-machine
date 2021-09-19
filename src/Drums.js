@@ -1,7 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import './Drums.css';
-import { Key } from './Key';
 import boom from './assets/sounds/boom.wav';
 import clap from './assets/sounds/clap.wav';
 import hihat from './assets/sounds/hihat.wav';
@@ -14,6 +13,7 @@ import tom from './assets/sounds/tom.wav';
 
 export const Drums = () => {
   const [musicTitle, setMusicTitle] = useState('');
+  const [, setKeyPressed] = useState(false);
   const data = [
     {
       id: 'Q',
@@ -63,21 +63,48 @@ export const Drums = () => {
     },
   ];
 
-  const keyPressHandler = (title) => {
-    setMusicTitle(title);
+  const playMusic = (e) => {
+    e.target.children[0].play();
+    setMusicTitle(e.target.id);
   };
 
+  useEffect(() => {
+    const downHandler = (e) => {
+      setKeyPressed(true);
+
+      const musicToPlay = data.filter(
+        (d) => d.id.toLowerCase() === e.key.toLowerCase()
+      );
+      if (musicToPlay.length === 0) return;
+      const audioElement = document.querySelector(`#${musicToPlay[0].id}`);
+      audioElement.play();
+      setMusicTitle(musicToPlay[0].title);
+    };
+    const upHandler = (e) => {
+      setKeyPressed(false);
+    };
+    window.addEventListener('keydown', downHandler);
+    window.addEventListener('keyup', upHandler);
+
+    // Remove event listeners on cleanup
+    return () => {
+      window.removeEventListener('keydown', downHandler);
+      window.removeEventListener('keyup', upHandler);
+    };
+  }, []);
   return (
     <main id="drum-machine">
       <div className="keys">
         {data.map((d) => (
-          <Key
+          <button
             key={d.id}
-            id={d.id}
-            title={d.title}
-            music={d.music}
-            onPress={keyPressHandler}
-          />
+            className="drum-pad"
+            onClick={playMusic}
+            id={d.title}
+          >
+            {d.id}
+            <audio className="clip" id={d.id} src={d.music} type="audio/wav" />
+          </button>
         ))}
       </div>
       <div className="controls">

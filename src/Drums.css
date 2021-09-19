@@ -24,6 +24,21 @@
   letter-spacing: 1.5px;
 }
 
+.drum-pad {
+  padding: 2rem;
+  border-radius: var(--border-rad);
+  box-shadow: var(--shadow);
+  border: none;
+  outline: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background-color: hsl(43, 74%, 66%);
+}
+
+.drum-pad:active {
+  background-color: #f4a261;
+}
+
 @media (min-width: 768px) {
   #drum-machine {
     display: flex;
